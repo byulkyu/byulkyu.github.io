@@ -243,7 +243,8 @@ body {
     flex: 1;
 }
 
-.hanja {
+.hanja,
+.sub-label {
     color: #86868b;
     font-size: 14px;
 }
@@ -347,6 +348,70 @@ body {
 .item-period {
     color: #86868b;
     font-size: 13px;
+}
+
+.section-desc {
+    color: #86868b;
+    font-size: 15px;
+    margin: -16px 0 24px 0;
+    letter-spacing: -0.1px;
+}
+
+.list-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.list-card {
+    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.05) inset,
+        0 2px 4px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.list-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.05) inset,
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.article-card .item-excerpt {
+    color: #6e6e73;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.article-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.article-body p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #333;
+}
+
+.article-meta {
+    color: #86868b;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 /* Preference Section */
@@ -718,7 +783,8 @@ body {
         font-size: 28px;
     }
     
-    .portfolio-items {
+    .portfolio-items,
+    .list-items {
         grid-template-columns: 1fr;
     }
     

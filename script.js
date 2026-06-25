@@ -1,32 +1,24 @@
-// Subtle 2011 Apple-style interactions
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Portfolio items - subtle hover enhancement
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
+function initSiteInteractions() {
+    document.querySelectorAll('.portfolio-item, .list-card').forEach(item => {
         item.addEventListener('mouseenter', function() {
-            // Add subtle shine effect
             this.style.transition = 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
         });
     });
 
-    // Contact links - smooth interaction
-    const contactLinks = document.querySelectorAll('.contact-link');
-    contactLinks.forEach(link => {
+    document.querySelectorAll('.contact-link').forEach(link => {
         link.addEventListener('mouseenter', function() {
             this.style.transition = 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
         });
     });
 
-    // Info rows - subtle slide on hover
-    const infoRows = document.querySelectorAll('.info-row');
-    infoRows.forEach(row => {
+    document.querySelectorAll('.info-row').forEach(row => {
         row.addEventListener('mouseenter', function() {
             this.style.transition = 'all 0.2s ease';
         });
     });
+}
 
-    // Smooth scroll for internal links (if any)
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -39,17 +31,31 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+}
 
-    // Add subtle fade-in animation on load
-    const sections = document.querySelectorAll('.section');
-    sections.forEach((section, index) => {
+function initFadeIn() {
+    document.querySelectorAll('.section').forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
+
         setTimeout(() => {
             section.style.opacity = '1';
             section.style.transform = 'translateY(0)';
         }, 100 * (index + 1));
     });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSiteInteractions();
+    initSmoothScroll();
+    initFadeIn();
 });
+
+if (typeof initHomepage === 'function') {
+    const originalInit = initHomepage;
+    initHomepage = function() {
+        originalInit();
+        initSiteInteractions();
+    };
+}
